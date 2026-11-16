@@ -1,0 +1,10 @@
+{
+  "name": "suv-ombor-webmap",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cho'ponota va Dagbit suv inshootlari: to'g'on yorilishi toshqinining 3D veb-xarita simulyatsiyasi",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}
