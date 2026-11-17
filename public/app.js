@@ -1,10 +1,10 @@
 /* global maplibregl */
 'use strict';
 
-// ───────────── Inshootlar (koordinatalar aniq; hajm/balandlik — pasport ma'lumoti bilan almashtiring) ─────────────
+// ───────────── Inshootlar (koordinata va rezervuar hajmi — pasport bo'yicha; devor balandligi taxminiy) ─────────────
 const SITES = {
   choponota: { name: "Cho'pon ota suv inshooti", lng: 67.05246, lat: 39.681374, volume: 0.006, height: 8 },
-  dagbit: { name: 'Dagbit suv inshooti', lng: 66.954249, lat: 39.711825, volume: 0.5, height: 8 },
+  dagbit: { name: 'Dagbit suv inshooti', lng: 66.954249, lat: 39.711825, volume: 0.006, height: 8 },
 };
 
 try { localStorage.removeItem('suvinshoot.sites.v1'); } catch { /* yo'q */ }
@@ -180,6 +180,7 @@ function selectSite(id, fly) {
   $('height').value = s.height;
   setBreach(s.lng, s.lat);
   if (fly) map.flyTo({ center: [s.lng, s.lat], zoom: 13, pitch: 60, duration: 1800, offset: [0, 170] });
+  if (window.onSiteChange) window.onSiteChange(id); // pasport bo'yicha rezervuar ssenariylarini yangilash (info.js)
   return true;
 }
 
@@ -528,4 +529,4 @@ function addMsg(kind, text) {
 // Parametr maydonida Enter — simulyatsiyani boshlaydi
 document.querySelectorAll('.form input').forEach((el) => el.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !$('run').disabled) $('run').click(); }));
 
-window.floodApp = { state, runSimulation, selectSite, map, startPlay, stopPlay, setView, buildKmz, buildCsv };
+window.floodApp = { SITES, state, runSimulation, selectSite, map, startPlay, stopPlay, setView, buildKmz, buildCsv };

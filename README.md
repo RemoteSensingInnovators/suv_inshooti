@@ -25,8 +25,8 @@ Sun'iy yo'ldosh tasviri va relyef plitkalari internetdan yuklanadi.
 
 | Inshoot | Kenglik | Uzunlik | Standart hajm |
 |---|---|---|---|
-| Cho'pon ota suv inshooti | 39.681374 | 67.052460 | 6 000 m³ (ochiq manbalardan) |
-| Dagbit suv inshooti | 39.711825 | 66.954249 | 0,5 mln m³ (**taxminiy**) |
+| Cho'pon ota suv inshooti | 39.681374 | 67.052460 | 6 000 m³ (pasport: 2×2 000 + 2×1 000 m³) |
+| Dagbit suv inshooti | 39.711825 | 66.954249 | 6 000 m³ (pasport: 2×3 000 m³) |
 
 To'g'on balandligi ikkalasida ham 8 m deb olingan — bu **taxminiy** qiymat. Hisobdan oldin pasport ma'lumotlarini kiriting. Qiymatlar `public/app.js` boshidagi `SITES` ichida turadi.
 
@@ -47,8 +47,15 @@ Natija dastlabki baholash uchun mo'ljallangan va rasmiy xavf xaritasi yoki loyih
 | `public/app.js` | xarita, boshqaruv, animatsiya, eksport |
 | `public/sim-core.js`, `public/sim-worker.js` | toshqin modeli (Web Worker'da ishlaydi) |
 | `public/export.js` | KMZ/CSV yordamchilari |
+| `public/info.js`, `public/data.js` | Pasport va Statistika bo'limlari, ularning ma'lumotlari |
 | `public/vendor/` | MapLibre GL JS 4.7.1 |
 | `docs/` | Word qo'llanma (skrinshotlar bilan) |
+
+## Rasmlar
+
+Inshoot sxemalari va pasport surati (`public/img/`) repozitoriyga kiritilmagan — ular qo'riqlanadigan obyektga tegishli. Dashboardning Pasport bo'limida ko'rinishi uchun fayllarni shu papkaga qo'lda qo'ying: `choponota-texnologik-karta.jpg`, `choponota-pasport-stend.jpg`, `samarqand-sxema.jpg`.
+
+Manba jadvallar `data/` papkasida; `public/data.js` ulardan yaratilgan.
 
 ## Litsenziya eslatmasi
 
