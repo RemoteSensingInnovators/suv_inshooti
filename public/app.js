@@ -7,7 +7,7 @@ const SITES = {
   dagbit: { name: 'Dagbit suv inshooti', lng: 66.954249, lat: 39.711825, volume: 0.5, height: 8 },
 };
 
-try { localStorage.removeItem('suvombor.sites.v1'); } catch { /* yo'q */ }
+try { localStorage.removeItem('suvinshoot.sites.v1'); } catch { /* yo'q */ }
 
 const GRID = 512; // DEM panjarasi (piksel)
 const $ = (id) => document.getElementById(id);
@@ -521,9 +521,9 @@ function addMsg(kind, text) {
 (() => {
   const d = $('help');
   let seen = false;
-  try { seen = localStorage.getItem('suvombor.helpSeen') === '1'; } catch { /* yo'q */ }
+  try { seen = localStorage.getItem('suvinshoot.helpSeen') === '1'; } catch { /* yo'q */ }
   d.open = !seen;
-  d.addEventListener('toggle', () => { try { localStorage.setItem('suvombor.helpSeen', '1'); } catch { /* yo'q */ } });
+  d.addEventListener('toggle', () => { try { localStorage.setItem('suvinshoot.helpSeen', '1'); } catch { /* yo'q */ } });
 })();
 // Parametr maydonida Enter — simulyatsiyani boshlaydi
 document.querySelectorAll('.form input').forEach((el) => el.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !$('run').disabled) $('run').click(); }));

@@ -2,6 +2,8 @@
 
 Samarqanddagi **Cho'pon ota** va **Dagbit** suv inshootlari uchun veb-xarita: inshoot yorilsa, suv qancha joyni bosishini 3D relyef ustida ko'rsatadi.
 
+Skrinshotli to'liq qo'llanma: [docs/Suv_inshooti_qollanma.docx](docs/Suv_inshooti_qollanma.docx).
+
 ## Ishga tushirish
 
 [Node.js](https://nodejs.org) (18 yoki undan yangi) kerak. Qo'shimcha kutubxona o'rnatish shart emas.
@@ -46,6 +48,7 @@ Natija dastlabki baholash uchun mo'ljallangan va rasmiy xavf xaritasi yoki loyih
 | `public/sim-core.js`, `public/sim-worker.js` | toshqin modeli (Web Worker'da ishlaydi) |
 | `public/export.js` | KMZ/CSV yordamchilari |
 | `public/vendor/` | MapLibre GL JS 4.7.1 |
+| `docs/` | Word qo'llanma (skrinshotlar bilan) |
 
 ## Litsenziya eslatmasi
 

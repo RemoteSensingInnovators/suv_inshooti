@@ -25,5 +25,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, "127.0.0.1", () => {
-  console.log(`Suv ombor veb-xaritasi: http://localhost:${PORT}`);
+  console.log(`Suv inshooti veb-xaritasi: http://localhost:${PORT}`);
 });
