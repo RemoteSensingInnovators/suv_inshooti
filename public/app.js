@@ -3,8 +3,8 @@
 
 // ───────────── Inshootlar (koordinata va rezervuar hajmi — pasport bo'yicha; devor balandligi taxminiy) ─────────────
 const SITES = {
-  choponota: { name: "Cho'pon ota suv inshooti", lng: 67.05246, lat: 39.681374, volume: 0.006, height: 8 },
-  dagbit: { name: 'Dagbit suv inshooti', lng: 66.954249, lat: 39.711825, volume: 0.006, height: 8 },
+  choponota: { name: "Cho'pon ota suv inshooti", lng: 67.059071, lat: 39.682269, volume: 0.006, height: 8 },
+  dagbit: { name: 'Dagbit suv inshooti', lng: 66.956325, lat: 39.712479, volume: 0.006, height: 8 },
 };
 
 try { localStorage.removeItem('suvinshoot.sites.v1'); } catch { /* yo'q */ }

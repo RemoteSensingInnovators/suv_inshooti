@@ -25,8 +25,8 @@ Sun'iy yo'ldosh tasviri va relyef plitkalari internetdan yuklanadi.
 
 | Inshoot | Kenglik | Uzunlik | Standart hajm |
 |---|---|---|---|
-| Cho'pon ota suv inshooti | 39.681374 | 67.052460 | 6 000 m³ (pasport: 2×2 000 + 2×1 000 m³) |
-| Dagbit suv inshooti | 39.711825 | 66.954249 | 6 000 m³ (pasport: 2×3 000 m³) |
+| Cho'pon ota suv inshooti | 39.682269 | 67.059071 | 6 000 m³ (pasport: 2×2 000 + 2×1 000 m³) |
+| Dagbit suv inshooti | 39.712479 | 66.956325 | 6 000 m³ (pasport: 2×3 000 m³) |
 
 To'g'on balandligi ikkalasida ham 8 m deb olingan — bu **taxminiy** qiymat. Hisobdan oldin pasport ma'lumotlarini kiriting. Qiymatlar `public/app.js` boshidagi `SITES` ichida turadi.
 
