@@ -30,6 +30,21 @@ Sun'iy yo'ldosh tasviri va relyef plitkalari internetdan yuklanadi.
 
 To'g'on balandligi ikkalasida ham 8 m deb olingan — bu **taxminiy** qiymat. Hisobdan oldin pasport ma'lumotlarini kiriting. Qiymatlar `public/app.js` boshidagi `SITES` ichida turadi.
 
+## Xavfli zonalar va xlorlash
+
+Xaritada har bir inshoot atrofida xlor ombori turiga qarab xavfli zonalar ko'rsatiladi:
+
+| Xlor ombori turi | Radius | Maydon |
+|---|---|---|
+| Ballonli | 150 m | ≈7,1 ga |
+| Konteynerli | 500 m | ≈78,5 ga |
+
+- Chap paneldagi «Xavfli zonalar (xlor)» bo'limida ombor turi tanlanadi (150 m, 500 m, ikkalasi yoki ko'rsatilmasin).
+- Zona ichidagi binolar OpenStreetMap'dan olingan (Dagbit: 150 m ichida 1 ta, 500 m ichida 187 ta). Cho'pon ota atrofidagi binolar OpenStreetMap'da kiritilmagan, shuning uchun u yerda son ko'rsatilmaydi.
+- Zona markazi sifatida inshoot nuqtasi olingan. Xlor omborining aniq o'rni va haqiqiy turi (ballon yoki konteyner) aniqlashtirilishi kerak.
+
+«Xlorlash» bo'limida faol xlor sarfi kalkulyatori (M = Q × D / 1000), ikkala inshootning qiyosiy jadvali va sutkalik suv hajmiga qarab xlorlash usuli mezonlari bor. Manbalar: `data/XLORLASH.docx` va `data/XLORLASH mezonlari.docx`.
+
 ## Model va cheklovlar
 
 - **Relyef:** AWS Terrain Tiles (SRTM, ~30 m). Binolar, kanal dambalari va yo'l ko'tarmalari hisobga olinmaydi.
@@ -48,6 +63,7 @@ Natija dastlabki baholash uchun mo'ljallangan va rasmiy xavf xaritasi yoki loyih
 | `public/sim-core.js`, `public/sim-worker.js` | toshqin modeli (Web Worker'da ishlaydi) |
 | `public/export.js` | KMZ/CSV yordamchilari |
 | `public/info.js`, `public/data.js` | Pasport va Statistika bo'limlari, ularning ma'lumotlari |
+| `public/xlor.js`, `public/hazard-data.js` | Xavfli zonalar qatlami va Xlorlash bo'limi; zona ichidagi binolar (OpenStreetMap) |
 | `public/vendor/` | MapLibre GL JS 4.7.1 |
 | `docs/` | Word qo'llanma (skrinshotlar bilan) |
 
@@ -55,8 +71,10 @@ Natija dastlabki baholash uchun mo'ljallangan va rasmiy xavf xaritasi yoki loyih
 
 Inshoot sxemalari va pasport surati (`public/img/`) repozitoriyga kiritilmagan — ular qo'riqlanadigan obyektga tegishli. Dashboardning Pasport bo'limida ko'rinishi uchun fayllarni shu papkaga qo'lda qo'ying: `choponota-texnologik-karta.jpg`, `choponota-pasport-stend.jpg`, `samarqand-sxema.jpg`.
 
-Manba jadvallar `data/` papkasida; `public/data.js` ulardan yaratilgan.
+Manba jadvallar va hujjatlar `data/` papkasida; `public/data.js` jadvallardan yaratilgan.
 
 ## Litsenziya eslatmasi
 
 Asos xarita sifatida Google sun'iy yo'ldosh plitkalari to'g'ridan-to'g'ri ulangan; bu rasmiy litsenziyalangan yo'l emas. Ommaviy foydalanish uchun Esri qatlamiga o'ting yoki Google Maps API kalitidan foydalaning.
+
+Xavfli zona ichidagi binolar ma'lumoti: © OpenStreetMap ishtirokchilari, ODbL litsenziyasi.

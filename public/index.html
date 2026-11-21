@@ -108,6 +108,29 @@
   .tbl { margin-top:8px; border:0; background:none; } .tbl summary { padding:2px 0; font-size:12px; font-weight:500; color:var(--acc); }
   .ctl { margin-bottom:8px; } .ctl label { font-size:12px; color:var(--mut); display:flex; align-items:center; gap:6px; } .ctl select { width:auto; }
   @media (max-width:820px) { #info { left:0; top:0; bottom:52%; padding:14px; } }
+  /* xavfli zonalar */
+  .hz-box { padding:10px 12px 12px; display:flex; flex-direction:column; gap:8px; }
+  .hz-ctl { display:flex; flex-direction:column; gap:3px; font-size:12px; color:var(--mut); }
+  .hz-leg { display:flex; align-items:center; gap:8px; font-size:12.5px; }
+  .hz-leg i { flex:none; width:22px; height:14px; border-radius:3px; }
+  .hz-leg .z150 { background:rgba(229,72,77,.5); border:2px dashed #ffd166; }
+  .hz-leg .z500 { background:rgba(229,72,77,.22); border:2px solid #ff6b6b; }
+  .hz-leg .zbld { width:10px; height:10px; border-radius:50%; background:#ffb454; border:1px solid #3a1d00; margin:0 6px; }
+  .hz-label { font:650 11.5px/1 "Segoe UI",system-ui,sans-serif; color:#fff; padding:3px 7px; border-radius:10px; white-space:nowrap; pointer-events:none; box-shadow:0 1px 4px rgba(0,0,0,.5); }
+  .hz-label.z500 { background:#c62f35; } .hz-label.z150 { background:#8a5a00; border:1px dashed #ffd166; }
+  /* xlorlash bo'limi */
+  table.grid-tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  table.grid-tbl th { text-align:left; font-weight:600; color:var(--mut); font-size:12px; padding:6px 10px 6px 0; border-bottom:1px solid var(--line); vertical-align:bottom; }
+  table.grid-tbl td { padding:6px 10px 6px 0; border-bottom:1px solid rgba(255,255,255,.06); vertical-align:top; }
+  table.grid-tbl td.num { font-variant-numeric:tabular-nums; }
+  table.grid-tbl tr.hl td { background:rgba(63,182,255,.1); } table.grid-tbl tr.hl td:first-child { box-shadow:inset 3px 0 0 var(--acc); padding-left:8px; }
+  table.cmp td:nth-child(n+3) { font-variant-numeric:tabular-nums; font-weight:600; }
+  .dose-val { color:var(--txt); font-size:15px; margin-left:8px; font-variant-numeric:tabular-nums; } #doseRange { width:220px; accent-color:var(--acc); }
+  .dose-row { margin-top:12px; } .dose-name { font-size:12.5px; margin-bottom:5px; }
+  .dose-track { position:relative; height:12px; border-radius:0 6px 6px 0; background:rgba(255,255,255,.07); }
+  .dose-fill { height:100%; border-radius:0 6px 6px 0; background:var(--acc); }
+  .dose-cap { position:absolute; top:-4px; width:3px; height:20px; background:#fff; border-radius:2px; transform:translateX(-1px); }
+  .dose-st { font-size:12.5px; margin-top:5px; color:#c9d5e2; } .dose-st b { color:var(--txt); font-size:14px; font-variant-numeric:tabular-nums; }
   .legend .bar.arr { background:linear-gradient(90deg,#d62728,#ff7f0e,#ffdd33,#8cd250,#2ca05a); }
   #progress { position:absolute; left:400px; right:0; top:0; height:3px; z-index:6; background:transparent; }
   #progress i { display:block; height:100%; width:0; background:var(--acc); transition:width .15s; }
@@ -183,6 +206,10 @@
     <div class="info-head"><h2>Statistika</h2></div>
     <div id="statBody" class="grid"></div>
   </div>
+  <div id="viewXlor">
+    <div class="info-head"><h2>Xlorlash va xavfli zonalar</h2></div>
+    <div id="xlorBody" class="grid"></div>
+  </div>
 </div>
 <div id="lightbox"><img id="lightImg" alt=""><div id="lightCap"></div></div>
 
@@ -191,8 +218,9 @@
     <h1>Suv inshooti — monitoring va toshqin simulyatsiyasi</h1>
     <p>Cho'pon ota va Dagbit suv inshootlari · Samarqand</p>
     <div id="tabs">
-      <button data-tab="map" class="on">Xarita va simulyatsiya</button>
+      <button data-tab="map" class="on">Xarita</button>
       <button data-tab="pass">Pasport</button>
+      <button data-tab="xlor">Xlorlash</button>
       <button data-tab="stat">Statistika</button>
     </div>
   </header>
@@ -238,6 +266,28 @@
       <div id="status" class="status" style="margin-top:8px"></div>
     </section>
 
+    <section id="hzSec">
+      <div class="sec-title">Xavfli zonalar (xlor)</div>
+      <div class="box hz-box">
+        <label class="hz-ctl">Xlor ombori turi
+          <select id="hzMode">
+            <option value="both" selected>Ikkala zona (150 va 500 m)</option>
+            <option value="500">Konteynerli ombor — 500 m</option>
+            <option value="150">Ballonli ombor — 150 m</option>
+            <option value="off">Ko'rsatilmasin</option>
+          </select>
+        </label>
+        <div class="hz-leg r150"><i class="z150"></i><span><b>150 m</b> — ballonli xlor ombori</span></div>
+        <div class="hz-leg r500"><i class="z500"></i><span><b>500 m</b> — konteynerli xlor ombori</span></div>
+        <div class="hz-leg rbld"><i class="zbld"></i><span>zona ichidagi binolar (OpenStreetMap)</span></div>
+        <div id="hzInfo" class="hint"></div>
+        <div class="row">
+          <button id="hzShow">Zonani xaritada ko'rsatish</button>
+          <button id="hzMore">Xlorlash bo'limi</button>
+        </div>
+      </div>
+    </section>
+
 
     <section>
       <div class="sec-title">Natija</div>
@@ -273,5 +323,7 @@
 <script src="data.js"></script>
 <script src="app.js"></script>
 <script src="info.js"></script>
+<script src="hazard-data.js"></script>
+<script src="xlor.js"></script>
 </body>
 </html>

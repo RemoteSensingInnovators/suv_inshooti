@@ -13,13 +13,13 @@
   function showTab(tab) {
     document.querySelectorAll('#tabs button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
     $('info').style.display = tab === 'map' ? 'none' : 'block';
-    $('viewPass').style.display = tab === 'pass' ? 'block' : 'none';
-    $('viewStat').style.display = tab === 'stat' ? 'block' : 'none';
+    for (const [k, id] of Object.entries(VIEWS)) $(id).style.display = tab === k ? 'block' : 'none';
     document.body.classList.toggle('info-open', tab !== 'map');
-    if (tab === 'pass') renderPassport();
-    if (tab === 'stat') renderStats();
+    if (renderers[tab]) renderers[tab]();
     $('info').scrollTop = 0;
   }
+  const VIEWS = { pass: 'viewPass', stat: 'viewStat', xlor: 'viewXlor' };
+  const renderers = { pass: () => renderPassport(), stat: () => renderStats() }; // xlor.js o'z bo'limini shu yerga qo'shadi
   document.querySelectorAll('#tabs button').forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
 
   // ───────────── Rezervuar ssenariylari (simulyatsiya formasi) ─────────────
@@ -233,5 +233,5 @@
   let rz = null;
   window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if ($('viewStat').style.display === 'block') redraws.forEach((f) => f()); }, 150); });
 
-  window.dashInfo = { showTab };
+  window.dashInfo = { showTab, renderers };
 })();
