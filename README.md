@@ -45,6 +45,14 @@ Xaritada har bir inshoot atrofida xlor ombori turiga qarab xavfli zonalar ko'rsa
 
 «Xlorlash» bo'limida faol xlor sarfi kalkulyatori (M = Q × D / 1000), ikkala inshootning qiyosiy jadvali va sutkalik suv hajmiga qarab xlorlash usuli mezonlari bor. Manbalar: `data/XLORLASH.docx` va `data/XLORLASH mezonlari.docx`.
 
+## DEM va Inspektor
+
+- **Inspektor** (yuqori paneldagi tugma, standart holatda yoqilgan): xaritada bosilgan nuqtaning dengiz sathidan balandligi (metrda), koordinatasi, eng yaqin inshootgacha masofa, xavfli zonaga tushishi va — simulyatsiya o'tkazilgan bo'lsa — suv chuqurligi hamda yetib kelish vaqti ko'rsatiladi.
+- **DEM** belgisi balandlik bo'yicha ranglangan relyef qatlamini va uning afsonasini yoqadi.
+- Kursor ostidagi koordinata va balandlik xaritaning yuqori chap burchagida doimiy ko'rinib turadi.
+
+Balandlik SRTM (~30 m) modelidan olinadi; xatosi bir necha metr bo'lishi mumkin.
+
 ## Model va cheklovlar
 
 - **Relyef:** AWS Terrain Tiles (SRTM, ~30 m). Binolar, kanal dambalari va yo'l ko'tarmalari hisobga olinmaydi.
@@ -63,6 +71,7 @@ Natija dastlabki baholash uchun mo'ljallangan va rasmiy xavf xaritasi yoki loyih
 | `public/sim-core.js`, `public/sim-worker.js` | toshqin modeli (Web Worker'da ishlaydi) |
 | `public/export.js` | KMZ/CSV yordamchilari |
 | `public/info.js`, `public/data.js` | Pasport va Statistika bo'limlari, ularning ma'lumotlari |
+| `public/dem.js` | DEM qatlami va Inspektor (nuqta balandligi) |
 | `public/xlor.js`, `public/hazard-data.js` | Xavfli zonalar qatlami va Xlorlash bo'limi; zona ichidagi binolar (OpenStreetMap) |
 | `public/vendor/` | MapLibre GL JS 4.7.1 |
 | `docs/` | Word qo'llanma (skrinshotlar bilan) |
